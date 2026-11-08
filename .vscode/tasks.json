@@ -1,10 +1,6 @@
 {
   "inputs": [
-    {"id": "name", "type": "promptString", "description": "zjczjc1983@qq.com"},
-    {"id": "name2file", "type": "pickString", "description": "输入文件名", "options": [
-      {"label": "zjczjc1983@163.com", "value": "zjczjc1983_163_com"},
-      {"label": "zjczjc1983@qq.com", "value": "zjczjc1983_qq_com"}
-    ]}
+    {"id": "email", "type": "pickString", "description": "选择邮箱", "options": ["zjczjc1983@163.com","zjczjc1983@qq.com",]}
   ],
   "tasks": [
     {
@@ -15,17 +11,18 @@
     {
       "label": "set git email",
       "type": "shell",
-      "command": "git config user.email ${input:name}"
+      "command": "git config user.email ${input:email}"
     },
     {
       "label": "ssh keygen",
       "type": "shell",
-      "command": "ssh-keygen -t ed25519 -C ${input:name2file} -f ~/.ssh/id_ed25519_${input:name2file}"
+      "command": "ssh-keygen -t ed25519 -C ${input:email} -f ~/.ssh/id_ed25519_${input:email}"
     },
     {
       "label": "copy public key",
       "type": "shell",
-      "command": "cat ~/.ssh/id_ed25519_${input:name}.pub | clip"
+      "command": "cat ~/.ssh/id_ed25519_${input:email}.pub | clip",
+      "options": {"shell": {"executable": "powershell"}}
     },
     {
       "label": "ssh check",
