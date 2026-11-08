@@ -1,0 +1,37 @@
+{
+  "inputs": [
+    {"id": "name", "type": "promptString", "description": "zjczjc1983@qq.com"},
+    {"id": "name2file", "type": "pickString", "description": "输入文件名", "options": [
+      {"label": "zjczjc1983@163.com", "value": "zjczjc1983_163_com"},
+      {"label": "zjczjc1983@qq.com", "value": "zjczjc1983_qq_com"}
+    ]}
+  ],
+  "tasks": [
+    {
+      "label": "get git email",
+      "type": "shell",
+      "command": "git config user.email"
+    },
+    {
+      "label": "set git email",
+      "type": "shell",
+      "command": "git config user.email ${input:name}"
+    },
+    {
+      "label": "ssh keygen",
+      "type": "shell",
+      "command": "ssh-keygen -t ed25519 -C ${input:name2file} -f ~/.ssh/id_ed25519_${input:name2file}"
+    },
+    {
+      "label": "copy public key",
+      "type": "shell",
+      "command": "cat ~/.ssh/id_ed25519_${input:name}.pub | clip"
+    },
+    {
+      "label": "ssh check",
+      "type": "shell",
+      "command": "ssh -T git@github.com"
+    }
+  ],
+  "version": "2.0.0"
+}

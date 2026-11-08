@@ -1,0 +1,12 @@
+{
+  "VsCodeTaskButtons.showCounter": true,
+  "VsCodeTaskButtons.tasks": [
+    {"label": "🧰", "tooltip": "工具箱", "alignment": "right", "tasks": [
+      {"label": "查看Git绑定的邮箱", "task": "get git email"},
+      {"label": "设置Git绑定的邮箱", "task": "set git email"},
+      {"label": "生成密钥", "task": "ssh keygen"}
+      {"label": "复制系统内公钥", "task": "copy public key"},
+      {"label": "验证SSH连通性", "task": "ssh check"}
+    ]}
+  ]
+}
