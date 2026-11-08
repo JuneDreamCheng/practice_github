@@ -8,5 +8,6 @@
       {"label": "复制系统内公钥", "task": "copy public key"},
       {"label": "验证SSH连通性", "task": "ssh check"}
     ]}
-  ]
+  ],
+  "terminal.integrated.defaultProfile.windows": "Git Bash"
 }
